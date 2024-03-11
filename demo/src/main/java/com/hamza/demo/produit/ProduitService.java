@@ -19,6 +19,6 @@ public class ProduitService implements IProduit{
 
     @Override
     public List<Produit> getAllProduit() {
-        return null;
+        return produitRepository.findAll();
     }
 }
