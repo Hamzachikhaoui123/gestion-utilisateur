@@ -1,6 +1,6 @@
-package com.hamza.demo.produit;
+package com.hamza.demo.facture;
 
-import com.hamza.demo.category.Category;
+import com.hamza.demo.payment.Payment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,26 +8,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Date;
-
-@Entity
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
+@Entity
+@Data
 @Builder
-public class Produit {
+public class Facture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid2")
     private String id;
 
-    private String name;
-    private String Ref;
-    private long price;
-    private Date dateCreation;
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-
+    private String ref;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment-id")
+    private Payment payment;
 }
