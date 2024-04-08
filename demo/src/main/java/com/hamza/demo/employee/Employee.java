@@ -4,20 +4,16 @@ import com.hamza.demo.adress.Address;
 import com.hamza.demo.department.Department;
 import com.hamza.demo.mission.Mission;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Builder
 @Table(name = "employee")
 public class Employee {
     @Id
@@ -33,7 +29,7 @@ public class Employee {
     @Column(nullable = false,unique = true)
     private String email;
     @Column(nullable = false)
-    private LocalDate birthdate;
+    private Long birthdate;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EmployeeRole role;
