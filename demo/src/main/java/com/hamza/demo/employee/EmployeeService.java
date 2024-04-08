@@ -16,11 +16,25 @@ public class EmployeeService implements IEmployee {
 
     @Override
     public List<Employee> getEmployees() {
-        return null;
+        return employeeRepository.findAll();
     }
 
     @Override
     public Employee getEmployeeById(String id) {
-        return null;
+        return employeeRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public Employee updateEmployee(String id, Employee employee) {
+        System.out.println("employee "+employee);
+        Employee employeeUpdate=getEmployeeById(id);
+        employeeUpdate.setLastName(employee.getLastName());
+        employeeUpdate.setBirthdate(employee.getBirthdate());
+        employeeUpdate.setFirstName(employee.getFirstName());
+        employeeUpdate.setEmail(employee.getEmail());
+        employeeUpdate.setRole(employee.getRole());
+        employeeUpdate.setDepartment(employee.getDepartment());
+
+        return employeeRepository.save(employeeUpdate);
     }
 }

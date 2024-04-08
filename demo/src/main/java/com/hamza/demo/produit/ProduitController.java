@@ -39,7 +39,7 @@ public class ProduitController {
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Produit> deleteProduit(@PathVariable  String id){
-        System.out.println("id"+id);
+
         return ResponseEntity.ok(produitService.deleteProduit(id));
     }
 }

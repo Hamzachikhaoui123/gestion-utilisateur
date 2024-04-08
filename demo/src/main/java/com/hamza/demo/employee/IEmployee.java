@@ -6,4 +6,5 @@ public interface IEmployee {
     Employee addEmployee(Employee employee);
     List<Employee> getEmployees();
     Employee getEmployeeById(String id);
+    Employee updateEmployee(String id , Employee employee);
 }

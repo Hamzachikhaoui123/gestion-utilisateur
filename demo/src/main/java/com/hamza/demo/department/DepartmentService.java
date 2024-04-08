@@ -22,7 +22,6 @@ public class DepartmentService implements IDepartment {
 
     @Override
     public Department getDepartmentByID(String id) {
-        System.out.println("test "+id);
         return departmentRepository.findById(id).orElseThrow();
     }
 }
