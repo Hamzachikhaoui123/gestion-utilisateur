@@ -1,6 +1,7 @@
 package com.hamza.demo.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,6 @@ public class EmployeeService implements IEmployee {
 
     @Override
     public Employee updateEmployee(String id, Employee employee) {
-        System.out.println("employee "+employee);
         Employee employeeUpdate=getEmployeeById(id);
         employeeUpdate.setLastName(employee.getLastName());
         employeeUpdate.setBirthdate(employee.getBirthdate());
@@ -36,5 +36,12 @@ public class EmployeeService implements IEmployee {
         employeeUpdate.setDepartment(employee.getDepartment());
 
         return employeeRepository.save(employeeUpdate);
+    }
+
+    @Override
+    public ResponseEntity<String> DeleteEmployee(String id) {
+        employeeRepository.deleteById(id);
+        return ResponseEntity.ok("Employee deleted avec success");
+
     }
 }

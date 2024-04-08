@@ -4,6 +4,7 @@ import com.hamza.demo.department.Department;
 import com.hamza.demo.department.IDepartment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +33,12 @@ public class EmployeeController {
     }
     @PutMapping(path = "/update/{idEmployee}")
     public Employee updateEmployee( @RequestBody Employee employee,@RequestParam String id,@PathVariable String idEmployee){
-        System.out.println("idd "+ idEmployee);
         Department department=iDepartment.getDepartmentByID(id);
         employee.setDepartment(department);
         return iEmployee.updateEmployee(idEmployee,employee);
     };
+    @DeleteMapping(path = "{id}")
+    public HttpEntity DeletedEmployee(@PathVariable String id){
+        return iEmployee.DeleteEmployee(id);
+    }
 }
