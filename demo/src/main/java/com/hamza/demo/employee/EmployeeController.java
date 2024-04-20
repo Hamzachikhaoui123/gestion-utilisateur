@@ -11,6 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/employee")
+@CrossOrigin(origins = "*")
+
 @RequiredArgsConstructor
 public class EmployeeController {
     @Autowired
